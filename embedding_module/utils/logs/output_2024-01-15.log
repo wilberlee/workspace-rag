@@ -1,0 +1,14 @@
+2024-01-15 15:14:58,242 - INFO - vs_path:/data/llm_group/backup-50/codes/code/Langchain_chat_1108/vector_store/test22, index_name:index, query:你好, topk:3
+2024-01-15 15:14:58,335 - ERROR - search_query_with_score_by_faiss:Error in faiss::FileIOReader::FileIOReader(const char*) at /project/faiss/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /data/llm_group/backup-50/codes/code/Langchain_chat_1108/vector_store/test22/index.faiss for reading: No such file or directory
+Traceback (most recent call last):
+  File "/data/llm_group/backup-50/codes/code/Langchain_chat_1108/db/db_operate.py", line 239, in search_query_with_score_by_faiss
+    return faiss_api.search_with_score_by_text(vs_path, embeddings, index_name, query, similarity_search_function, topk)
+  File "/data/llm_group/backup-50/codes/code/Langchain_chat_1108/db/faiss_api.py", line 220, in search_with_score_by_text
+    vs = load_collection(vs_path, embeddings, index_name)
+  File "/data/llm_group/backup-50/codes/code/Langchain_chat_1108/db/faiss_api.py", line 23, in load_collection
+    return FAISS.load_local(folder_path, embeddings, index_name)
+  File "/opt/miniconda3/envs/vec_kg_chat/lib/python3.8/site-packages/langchain/vectorstores/faiss.py", line 722, in load_local
+    index = faiss.read_index(
+  File "/opt/miniconda3/envs/vec_kg_chat/lib/python3.8/site-packages/faiss/swigfaiss_avx2.py", line 10206, in read_index
+    return _swigfaiss_avx2.read_index(*args)
+RuntimeError: Error in faiss::FileIOReader::FileIOReader(const char*) at /project/faiss/faiss/impl/io.cpp:67: Error: 'f' failed: could not open /data/llm_group/backup-50/codes/code/Langchain_chat_1108/vector_store/test22/index.faiss for reading: No such file or directory
